@@ -1,0 +1,22 @@
+<div class="header">
+  <h1>Secvente introduse: 0</h1>
+</div>
+<div class="addBtn">
+  <button
+    type="button"
+    (click)="selectedMenu$.next('sequence')"
+    (click)="showModal$.next(true)"
+  >
+    Editează
+  </button>
+</div>
+<div class="sequences">
+  <div class="sequenceRow" *ngFor="let s of [].constructor(6); let i = index">
+    <div class="rowIndex">{{ i + 1 }}</div>
+    <div class="sequenceNumbers">
+      <div class="cell" *ngFor="let n of [].constructor(12); let i = index">
+        {{ i + 1 }}
+      </div>
+    </div>
+  </div>
+</div>

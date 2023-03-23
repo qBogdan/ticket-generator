@@ -1,0 +1,44 @@
+.modal {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modalWindow {
+    height: 90%;
+    width: 50%;
+    background-color: rgb(255, 251, 216);
+    color: black;
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.modalWindow .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 3rem;
+    background-color: rgb(183, 42, 42);
+    color: white;
+}
+
+.modalWindow .header h1 {
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 2rem;
+}
+.modalWindow .header button {
+    background-color: transparent;
+    border: none;
+    font-size: 5rem;
+    font-weight: bold;
+    rotate: 45deg;
+    cursor: pointer;
+    color: white;
+}
+
+.modalWindow .header button:hover {
+    scale: 1.1;
+}

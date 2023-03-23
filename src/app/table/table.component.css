@@ -1,0 +1,21 @@
+
+
+.table {
+    background-color: rgb(187, 233, 169);
+    width: 20rem;
+    aspect-ratio: 1;
+    border-radius: 1rem;
+    border: 7px solid rgb(8, 86, 34);
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    grid-template-rows: repeat(5,1fr);
+    gap: .5rem;
+    padding: .5rem;
+}
+
+.table .cell {
+    height: 100%;
+    width: 100%;
+    box-shadow: 0 0 5px black;
+    font-size: 1.5rem
+}

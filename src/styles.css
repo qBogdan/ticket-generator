@@ -1,1 +1,75 @@
-/* You can add global styles to this file, and also import other style files */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+main {
+    background-color: rgb(209, 199, 227);
+    min-height: 100vh;
+    color: white;
+    display: flex;
+    position: relative;
+}
+
+app-window {
+    flex: 2;
+    border-right: 2px solid rgba(128, 128, 128, 0.227);
+}
+
+app-sequences {
+    background-color: rgb(46, 45, 55);
+    flex: 1;
+}
+
+app-modal {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(49, 11, 11, 0.789);
+}
+
+.cell {
+    height: 5rem;
+    aspect-ratio: 1;
+    background-color: black;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 2rem;
+    border: 3px solid white;
+    position: relative;
+    box-shadow: 0px 0px 10px black;
+}
+
+.cell:hover {
+    scale: 1.05;
+}
+
+.cell::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(./assets/ui/cellHighlight.svg);
+}
+
+.cell-red {
+    background-color: rgb(86, 4, 4);
+    border:  3px solid orange;
+}
+
+.cell-blue {
+    background-color: rgb(9, 9, 106);
+    border: 3px solid cyan;
+}
+
+.cell-green {
+    background-color: rgb(28, 106, 9);
+    border: 3px solid rgb(38, 255, 0);
+}

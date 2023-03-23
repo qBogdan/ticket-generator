@@ -1,0 +1,16 @@
+.options {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.optionsWindow {
+    height: 90%;
+    width: 50%;
+    background-color: rgb(255, 251, 216);
+    color: black;
+    border-radius: 1rem;
+    padding: 1rem;
+}

@@ -1,0 +1,16 @@
+<div class="modal">
+  <div class="modalWindow">
+    <div class="header">
+      <h1>
+        {{
+          selectedMenu$.value === "options" ? "Optiuni" : "Editeaza Secvente"
+        }}
+      </h1>
+      <button type="button" (click)="showModal$.next(false)">+</button>
+    </div>
+    <div class="content">
+      <app-form *ngIf="selectedMenu$.value === 'sequence'"></app-form>
+      <app-options *ngIf="selectedMenu$.value === 'options'"></app-options>
+    </div>
+  </div>
+</div>
