@@ -1,0 +1,45 @@
+
+.sequences {
+    padding: 1rem;
+}
+
+.sequenceRow {
+    width: 100%;
+    display: flex;
+    gap: .5rem;
+    background-color: rgb(116, 8, 8);
+    border-radius: 1rem;
+    overflow: hidden;
+    margin: 1rem 0;
+    padding-right: .5rem;
+}
+
+.sequenceNumber {
+    flex: 1;
+    width:  100%;
+    aspect-ratio: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 3rem;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+
+.sequenceRow input {
+    border-radius: 0.5rem;
+    outline: none;
+    border: 2px solid brown;
+    display: block;
+    flex: 1;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    font-family: sans-serif;
+    font-weight: bold;
+    padding: 0 .5rem ;
+    margin: .5rem 0;
+}

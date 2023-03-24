@@ -1,1 +1,26 @@
-<h1>sequence form</h1>
+<form [formGroup]="sequenceForm">
+  <div class="sequences" formArrayName="sequences">
+    <div
+      class="sequenceRow"
+      *ngFor="let sequence of sequences.controls; let i = index"
+      formArrayName="{{ i }}"
+    >
+      <div class="sequenceNumber">{{ i + 1 }}</div>
+      <input
+        required="true"
+        type="number"
+        min="0"
+        max="24"
+        *ngFor="let cell of [].constructor(12); let j = index"
+        formControlName="{{ j }}"
+        value="{{ j }}"
+      />
+    </div>
+  </div>
+
+  <button (click)="addRow()">Adauga secventa</button>
+
+  <button (click)="save($event)" (click)="showModal$.next(false)">
+    Salveaza
+  </button>
+</form>

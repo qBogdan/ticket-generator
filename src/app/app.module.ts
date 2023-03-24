@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { WindowComponent } from './window/window.component';
@@ -20,7 +21,7 @@ import { ModalComponent } from './modal/modal.component';
     FormComponent,
     ModalComponent,
   ],
-  imports: [CommonModule, BrowserModule],
+  imports: [CommonModule, BrowserModule, ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
