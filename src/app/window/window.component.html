@@ -8,6 +8,9 @@
     <img src="../../assets/ui/cog.svg" alt="" />
   </div>
 </div>
+<!-- <div *ngFor="let s of sequences$ | async">
+  <h2 *ngFor="let n of s">{{ n }}</h2>
+</div> -->
 <div class="tables">
-  <app-table></app-table>
+  <app-table [table]="mockTable"></app-table>
 </div>

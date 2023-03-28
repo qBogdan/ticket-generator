@@ -25,13 +25,13 @@ export class LocalStorageService implements OnDestroy {
       localStorage.setItem(key, JSON.stringify(value));
       this.events.next({ key, value });
     } catch (e) {
-      console.warn('Local storage not available');
+      console.warn(/*'Local storage not available',*/ e);
     }
   }
 
   getItem(key: string) {
     try {
-      const storredValue = localStorage.getItem(key);
+      const storredValue = localStorage.getItem(key)!;
       return storredValue ? JSON.parse(storredValue) : undefined;
     } catch (e) {
       console.warn('Local storage not available');

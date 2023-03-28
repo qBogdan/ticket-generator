@@ -9,22 +9,8 @@ import { SequencesService } from '../sequences.service';
 })
 export class TableComponent implements OnInit {
   sequences$ = this.sequencesService.sequences$;
-  tablesData!: [][];
+  @Input() table!: { v: number; s: string }[];
   constructor(private sequencesService: SequencesService) {}
 
-  ngOnInit() {
-    this.sequences$.pipe(
-      map((x) => {
-        x.map((y) => {
-          let z = {
-            colums: [],
-            rows: [],
-          };
-        });
-      })
-    );
-    // .subscribe((x) => {
-    //   console.log(x);
-    // });
-  }
+  ngOnInit() {}
 }

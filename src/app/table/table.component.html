@@ -1,5 +1,10 @@
 <div class="table">
-  <div class="cell" *ngFor="let n of [].constructor(24); let i = index">
-    {{ i + 1 }}
+  <div
+    class="cell"
+    *ngFor="let n of table"
+    [class.cell-red]="n.s === 'c'"
+    [class.cell-blue]="n.s === 'r'"
+  >
+    {{ n.v }}
   </div>
 </div>

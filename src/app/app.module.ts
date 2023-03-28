@@ -11,6 +11,11 @@ import { FormComponent } from './form/form.component';
 import { CommonModule } from '@angular/common';
 import { ModalComponent } from './modal/modal.component';
 
+// const material = [
+//   MatDialogModule,
+//   MatButtonModule,
+// ]
+
 @NgModule({
   declarations: [
     AppComponent,

@@ -7,9 +7,10 @@ import {
   FormArray,
   Validators,
   UntypedFormGroup,
+  FormBuilder,
 } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { map, startWith, tap } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { ModalServiceService } from '../modal-service.service';
 import { LocalStorageService } from '../local-storage.service';
@@ -20,48 +21,64 @@ import { LocalStorageService } from '../local-storage.service';
   styleUrls: ['./form.component.css'],
 })
 export class FormComponent implements OnInit {
-  sequenceForm!: FormGroup;
-  formData!: FormGroup;
-  localStorage = this.localStorageService;
-
   sequences$ = this.sequencesService.sequences$;
   showModal$ = this.modalServiceService.showModal$;
+
+  sequenceForm!: FormGroup;
+  sequences!: FormArray;
+  formData!: any;
 
   constructor(
     private sequencesService: SequencesService,
     private modalServiceService: ModalServiceService,
-    private localStorageService: LocalStorageService
+    private localStorageService: LocalStorageService,
+    private fb: FormBuilder
   ) {}
 
-  get sequences() {
-    return this.sequenceForm.get('sequences') as FormArray;
-  }
-
   ngOnInit() {
-    this.sequenceForm = new FormGroup({
+    this.sequenceForm = this.fb.group({
       sequences: new FormArray([]),
     });
 
-    this.sequenceForm.patchValue(this.localStorage.getItem('sequences'));
+    this.sequences = this.sequenceForm.get('sequences') as FormArray;
 
-    // this.sequenceForm.valueChanges
-    //   .pipe(
-    //     tap((x) => this.localStorage.setItem('sequences', x)),
-    //     map((x) => x.sequences),
-    //     map((x) => {
-    //       return x.map((s: any) => {
-    //         let arr = [];
-    //         for (let n in s) {
-    //           arr.push(s[n]);
-    //         }
-    //         return arr;
-    //       });
-    //     })
-    //   )
-    //   .subscribe((x) => {
-    //     this.sequences$.next(x);
-    //     console.log(this.localStorage.getItem('sequences'));
-    //   });
+    const savedData = this.localStorageService.getItem('formData');
+    if (savedData) {
+      this.formData = savedData;
+      this.patchForm();
+    }
+
+    this.sequenceForm.valueChanges
+      .pipe(
+        startWith(this.sequenceForm.value),
+        // map((x) => x.sequences),
+        map((x) => {
+          return x.sequences.map((s: any) => {
+            let arr = [];
+            for (let n in s) {
+              arr.push(s[n]);
+            }
+            return arr;
+          });
+        })
+      )
+      .subscribe((x) => {
+        this.sequences$.next(x);
+      });
+  }
+
+  patchForm() {
+    // Loop through the form data and patch the form
+    for (let sequence of this.formData.sequences) {
+      const sequenceRow = new FormGroup({});
+      for (let i = 0; i < 12; i++) {
+        sequenceRow.addControl(
+          i.toString(),
+          new FormControl(sequence[i], Validators.required)
+        );
+      }
+      this.sequences.push(sequenceRow);
+    }
   }
 
   addRow() {
@@ -77,6 +94,7 @@ export class FormComponent implements OnInit {
 
   save(e: any) {
     e.preventDefault();
-    this.localStorage.setItem('sequences', this.sequenceForm);
+
+    this.localStorageService.setItem('formData', this.sequenceForm.value);
   }
 }
